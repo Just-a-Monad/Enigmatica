@@ -1,0 +1,131 @@
+
+@font-face {
+    font-family: 'merriweather';
+    src: url('../fonts/merriweather-v33-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'source serif pro';
+    src: url('../fonts/source-serif-4-v14-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+  /*background-color: #CCCCCC;*/
+    background-color: #faf9f6;
+}
+
+body {
+  /*
+  width: 50%;
+  max-width: 600px;
+  min-width: 300px;
+  */
+  width: var(--body-width);
+  margin-left: auto;
+  margin-right: auto;
+  color: #111111;
+  font-family: 'source serif pro', Georgia, serif;
+}
+
+img {
+  background-color: grey;
+}
+
+h1, h2, h3 {
+    font-family: 'merriweather';
+    margin-bottom: 2px;
+}
+
+.subtitle {
+  padding: 0px 0px 0px 0px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  font-style: italic;
+}
+
+.title-signature {
+  padding: 0px 0px 0px 0px;
+  margin-right: 10px;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: right;
+  font-style: italic;
+}
+
+table, td, th {
+  border: solid 1px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.center {
+  text-align: center;
+}
+
+td, th {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.terminal-mono {
+  font-family: mono, courier new;
+  font-weight: bold;
+  background: black;
+  color: #00FF00;
+}
+
+/* for the styling of figures in the text */
+.image-box {
+  border: solid black 1px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+body {
+  counter-reset: fig-count;
+}
+
+
+figure {
+  counter-increment: fig-count;
+  text-align: center;
+}
+
+figcaption::before {
+  content: "Fig #" counter(fig-count) " - ";
+  font-weight: bold;
+}
+
+/* for sidenotes */
+body {
+  counter-reset: sidenote-count;
+  position: relative;
+}
+.body-sidenote-num {
+  counter-increment: sidenote-count;
+}
+.body-sidenote-num::before {
+  content: counter(sidenote-count);
+}
+.sidenote-num {
+  size: 2em;
+}
+.sidenote-num::before {
+  content: counter(sidenote-count);
+}
+.sidenote {
+    position: absolute;
+    right: -230px;
+    width: 180px;
+    font-size: 0.85em;
+    color: #333;
+}
+
+
+

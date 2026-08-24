@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>TEST</title>
+    <meta charset="utf-8"/>
+<style>
+body {
+  position: relative;
+  width: min(100%, 600px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body {
+  counter-reset: sidenote-count;
+}
+
+.body-sidenote-num {
+  counter-increment: sidenote-count;
+}
+
+.body-sidenote-num::before {
+  content: counter(sidenote-count);
+}
+
+.sidenote-num {
+  color: grey;
+  size: 2em;
+}
+
+.sidenote-num::before {
+  content: counter(sidenote-count);
+}
+
+.sidenote {
+    position: absolute;
+    right: -200px;
+    width: 180px;
+    font-size: 0.85em;
+    color: #555;
+}
+
+</style>
+  </head>
+  <body>
+    <p>
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      <sup class="body-sidenote-num"></sup>
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      <sup class="body-sidenote-num"></sup>
+      <span class="sidenote">
+        <sup class="sidenote-num"></sup>
+        sidenote sidenote sidenote sidenote sidenote sidenote sidenote sidenote
+        sidenote sidenote sidenote sidenote
+      </span>
+    </p>
+    <p>
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      <sup class="body-sidenote-num"></sup>
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+    </p>
+    <p>
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+      testing testing testin testing testing testing testing testing testing
+    </p>
+  </body>
+</html>

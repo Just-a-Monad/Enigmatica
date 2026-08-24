@@ -1,0 +1,1019 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Imaginary Numbers and the Understanding of Mathematical Realism</title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="resources/style/Temml-Local.css"/>
+    <link rel="stylesheet" href="resources/style/common.css"/>
+    <link rel="icon" type="image/x-icon" href="logo.svg"/>
+  <!--<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>-->
+<style>
+html {
+  background-color: #4287f5;
+  /*background-color: #666666; */
+}
+body {
+  background-color: #faf9f6;
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  box-shadow: 0px  0px 10px 20px rgba(0,0,0,0.3);
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+/* LOGO styling*/
+        circle {
+				fill: none;
+				stroke: #FAF9F6;
+				stroke-width: 3px;
+				transition: r 500ms;
+				stroke-dasharray: 100, 1000;
+				stroke-dashoffset: 0;
+				transition: stroke-dashoffset 3000ms;
+				@starting-style {
+					stroke-dashoffset: 100;
+				}
+			}
+			
+			
+			:root {
+				--duration-star: 300ms;
+				--duration-hexagon: 300ms;
+				--duration-triangle: 2000ms;
+				--duration-petals: 1500ms;
+				--triangle-fudge: 200ms;
+				--petals-fudge: var(--duration-triangle);
+				--offwhite: #FAF9F6;
+				--softblue: rgb(66, 135, 245);
+        --body-width: min(100%, 600px);
+			}
+			
+			line, circle, .logo-petal, .logo-triangle {
+				stroke: #FAF9F6;
+				stroke-width: 50px;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				fill: none;
+			}
+
+			
+			.logo-star {
+				stroke-dasharray: 100, 1000;
+				stroke-dashoffset: 0;
+				transition: stroke-dashoffset linear var(--duration-star);
+				@starting-style {
+					stroke-dashoffset: 100;
+				}
+			}
+			
+			.logo-hexagon {
+				stroke-dasharray: 100, 1000;
+				stroke-dashoffset: 0;
+				transition: stroke-dashoffset var(--duration-hexagon) linear var(--duration-star);
+				@starting-style {
+					stroke-dashoffset: 100;
+				}
+			}
+			
+			.logo-triangle {
+				stroke-dasharray: 100, 1000;
+				stroke-dashoffset: 0;
+				transition: stroke-dashoffset var(--duration-triangle) ease calc(var(--duration-star) + var(--duration-hexagon) - var(--triangle-fudge));
+				@starting-style {
+					stroke-dashoffset: 100;
+				}
+			}
+			
+			.logo-petal {
+				stroke-dasharray: 100, 1000;
+				stroke-dashoffset: 0;
+				transition: stroke-dashoffset var(--duration-petals) ease-out calc(var(--duration-star) + var(--duration-hexagon) + var(--duration-triangle) - var(--triangle-fudge) - var(--petals-fudge));
+				@starting-style {
+					stroke-dashoffset: 100;
+				}
+			}
+			
+			.logo-text {
+				font-family: "Overpass Mono", monospace;
+				font-weight: 700;
+				color: var(--offwhite);
+				font-size: 1.5em;
+				text-align: center;
+        margin-top: -5px;
+				padding-left: 0.3em;
+				letter-spacing: 0.15em;
+			}
+			
+			.overpass-mono-700 {
+			  font-family: "Overpass Mono", monospace;
+			  font-optical-sizing: auto;
+			  font-weight: 700;
+			  font-style: normal;
+			}
+      .header-wrapper-div {
+      }
+      /*
+      .header-div {
+        container-type: inline-size;
+        position: fixed;
+        top: 50px;
+        left: 20px;
+        background-color: red;
+        height: 300px;
+        width: calc((100vw - var(--body-width))/2 - 100px);
+        max-width: 200px;
+        margin: 0px;
+        padding: 0px;
+      }
+      */
+      .header-div {
+        container-type: inline-size;
+        position: fixed;
+        top: 50px;
+        left: 20px;
+        width: clamp(100px, 20vw,200px);
+        height: 300px;
+      }
+      @media (max-width: 1260px) {
+        .header-div {
+          display: none;
+        }
+      }
+      svg {
+        margin: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0px;
+      }
+      .logo-svg {
+        width: 100%;
+      }
+      .header-table {
+        border: none;
+        color: var(--offwhite);
+				font-family: "Overpass Mono", monospace;
+				font-weight: 700;
+				color: var(--offwhite);
+				font-size: 1.25rem;
+        width: 100%;
+      }
+      .header-table-contents {
+        border: none;
+        border-top: 1px solid rgb(36,105,215);
+        height: 2rem;
+      }
+</style>
+  </head>
+  <body>
+    <div class="header-div">
+              <svg 
+                class="logo-svg"
+                viewBox="-1125 -1125 2250 2250" 
+                >
+                <line 
+                  class="logo-star"
+                  pathLength=100
+                  x1=0
+                  y1=0
+                  x2=866
+                  y2=-500
+                />
+                <line
+                  class="logo-star"
+                  pathLength=100
+                  x1=0
+                  y1=0
+                  x2=-866
+                  y2=-500
+                />
+                <line
+                  class="logo-star"
+                  pathLength=100
+                  x1=0
+                  y1=0
+                  x2=0
+                  y2=1000
+                />
+                <line
+                  class="logo-hexagon"
+                  pathLength=100
+                  x1=867
+                  y1=-500
+                  x2=867
+                  y2=500
+                /> 
+                <line
+                  class="logo-hexagon"
+                  pathLength=100
+                  x1=0
+                  y1=1000
+                  x2=866
+                  y2=501
+                />
+                <line
+                  class="logo-hexagon"
+                  pathLength=100
+                  x1=0
+                  y1=1000
+                  x2=-867
+                  y2=501
+                />
+                <line
+                  class="logo-hexagon"
+                  pathLength=100
+                  x1=-867
+                  y1=-500
+                  x2=-867
+                  y2=500
+                />
+                <line
+                  class="logo-hexagon"
+                  pathLength=100
+                  x1=-867
+                  y1=-500
+                  x2=0
+                  y2=-1000
+                />
+                <line
+                  class="logo-hexagon"
+                  pathLength=100
+                  x1=867
+                  y1=-500
+                  x2=0
+                  y2=-1000
+                />
+                <path
+                  class="logo-triangle"
+                  pathLength="100"
+                  d="
+                    M 0 -1000
+                    L -867 500
+                    L 867 500
+                    L 0 -1000
+                  "
+                />
+                <path
+                  pathLength=100
+                  class="logo-petal"
+                  d="
+                    M 0 -1000
+                    A 1000 1000 0 0 0 867 500
+                    A 1000 1000 0 0 0 -867 500
+                    A 1000 1000 0 0 0 0 -1000
+                  "
+                />
+              </svg>
+            <p class="logo-text">Enigmatica.</p>
+            <table class="header-table">
+              <tr><td class="header-table-contents">Home</td></tr>
+              <tr><td class="header-table-contents">Blog</td></tr>
+              <tr><td class="header-table-contents">Reccomended</td></tr>
+              <tr><td class="header-table-contents">cool shit</td></tr>
+            </table>
+    </div>
+    <!--
+    <div class="header-div">
+    </div>
+    -->
+    <h1>Imaginary Numbers and the Understanding of Mathematical Realism</h1>
+    <p class="subtitle">What the hell is even that -- Jeffrey Ridgway Sr.</p>
+    <div style="display: flex; justify-content: space-between;"> <!-- puts these on same line but justified to opposite ends -->
+      <span><time datetime="2026-05-23">May 23, 2026</time></span>
+      <span class="title-signature">By Just_a_Monad</span>
+    </div>
+    <hr>
+    <p>
+      I have recently untangled a knot in my understanding of mathematics that
+      has been plaguing me for many a year now.  It is the eternal question of
+      imaginary numbers and their tenuous connection to reality.
+    </p>
+    <p>
+      Are they a mere mathematical convienience as they were originally
+      conceived? A fundamental building block of reality? An abstract pattern
+      studied for its properties that is under no obligation to conform to
+      our expectations of what a block of "hard matter" might do?
+    </p>
+    <p>
+      Secondarily, why is this question so hard to find an answer to? Do the
+      experts actually know what they're talking about? Am I just stupid? Are
+      the mathematicians bullshitting us?
+    </p>
+    <p>
+      Anyone who has attempted to understand Imaginary numbers has likely
+      found themselves asking these questions whether or not they eventually
+      found satisfaction and understanding.  Or more likely, were left bereft
+      of either, having returned with only a frustrated ignorance.
+    </p>
+    <p>
+      Whichever group you dear reader fall into now I hope that you will leave
+      here with your head full of understanding, having supped at the breast
+      of my knowledge
+    </p>
+    <h3>Why has this question not been put to rest?</h3>
+    <p class="subtitle">I am Sisyphus and yall are the rocks -- unknown</p>
+    <hr>
+    <p>
+      Of the many questions I presented a moment ago I wish to first address the
+      4th, namely: Why is this question so hard to find an answer to.
+    </p>
+    <p>
+      After all, these imaginary numbers have been around for nearly 550 years
+      at this point. One would think that some benevolent bright spark would
+      have descended from the heavens and delivered through divine revalation
+      what understanding we mere mortals could not produce through our own
+      rationality and empiricism. But nay, the heavens remain shut and silent
+      as always, perhaps God is too busy giving children cancer to bother with
+      petty mathematics, but who knows, ours is not to reason why.
+    </p>
+    <p>
+      EXCEPT, that is, for when it is <i>EXACTLY</i> ours to reason why.
+    </p>
+    <p>
+      What it comes down to, in my opinion (which you should hold above all
+      other opinions and not a few facts), is several factors, these being:
+      <ul>
+        <li>The circularity of mathematical definitions</li>
+        <li>The amnesia of expertise</li>
+        <li>A wrongheaded conception of the reality of mathematical objects</li>
+        <li>The "shut up and calculate" problem</li>
+      </ul>
+    </p>
+    <p>
+      Now to be clear, I think that #3 is the root cause, the other 3 are more
+      reasons why #3 has not been resolved
+    </p>
+    <h3>Expertise and Calculation</h3>
+    <p class="subtitle">I'm a real devil with a calculator</p>
+    <hr>
+    <p>
+      I believe that many a person simply accepts the math as it is without a
+      true interrogation of their mental model, without striving for congruency
+      between the real and the imagined
+    </p>
+    <p>
+      There is no sin in this, If you understand the algorithms well enough to
+      use them, then you understand them well enough to be useful.  But for me
+      personally, not understanding something I care about is like an itch in
+      my soul.  An itch that requires immediate remedy via the backscratcher of
+      knowledge.
+    </p>
+    <p>
+      However, the plug-n-chug folks are not the only individuals successfully
+      using imaginary numbers for their own purposes, which are surely nefarious.
+      There are also experts who, in their infinite wisdom, hand out nuggets of
+      explanation like bread to the poor.  These include such staggering
+      insights as: "<math><mi>i</mi></math> is defined as the thing that when squared equals -1"
+      or "<math><mi>i</mi></math> represents a 90&deg; rotation" or "you can construct a thing
+      which behaves exactly like <math><mi>i</mi></math> out of the reals so it doesn't matter".
+      Truely, it would take an ignoramous possesed of an almost malignant
+      stupidity to remain unenlightened when pelted with such
+      profundities
+    </p>
+    <p>
+      One of the many culprits of these useless non-explanations is the curious
+      amnesia that experts fall victim too as soon as they leave the ranks of
+      the unwashed masses.  They forget the hard won bricks of intuition that
+      they gathered slowly and ever so painfully as soon as they use them to
+      build the next floor in their tower of abstraction<sup class="body-sidenote-num"></sup>.
+      <span class="sidenote">
+          <sup class="sidenote-num"></sup>
+          I wish for the life of me that I could remember where I heard this
+          phrase so that I could credit them, it was an interesting article I
+          think, and it may have been being read by the Primeagen?, but I
+          suppose that merely informing you that this snappy name and way of
+          thinking about learning and knowledge was not born of my intellect
+          but another, more magnificent one will have to do instead. It is
+          probably still out there if one cared to look, and would be a worthy
+          quest for a bored evening of "googling" if one had the wherewithal to
+          pull themselves away from tiktok for the minutes it might require,
+          <br><br>
+          I would do it myself, but alas, I must record several risqué
+          tiktoks of myself in a skirt and thigh highs to keep my audience
+          donating. Don't tell them I'm not a woman, the suspense is what keeps
+          them coming back
+      </span>
+      They forget the many false starts and bad predictions, all necessary steps
+      while building your mental model, and last but not least they forget what
+      it was even like to <b>not</b> know.
+    </p>
+    <p>
+      This is because once your mind finally understands something, the model
+      complete, your understanding gets boxed up, the internals hidden and
+      abstracted away from your conscious mind, so that you can use the
+      abstraction as a building block iteself in future endevours.  Saving
+      valuable working space in your memory as you go on with your life. and
+      for you it really is as simple as
+      <!-- i^2 := -1 -->
+      <math><mrow><msup><mi>i</mi><mn>2</mn></msup><mo lspace="0.2222em" rspace="0em">:</mo><mo lspace="0em">=</mo><mo form="prefix" stretchy="false">−</mo><mn>1</mn></mrow></math>.
+
+      Your mind has hidden all the logical machinery it built while you were
+      trying to understand, and replaced it with a useful abstraction and a
+      feeling of certainty. This is annoying perhaps, but if you imagine the
+      alternative you understand why it is neccessary.  Imagine if every time
+      you thought about the properties of a square your mind reconstructed the
+      WHOLE of your understanding in its entirity all the way down to the
+      axioms of geometry. You could never get anything done because there would
+      be no more room in your head, it would be full of square.
+    </p>
+    <p>
+      An interesting side effect of this realization about the nature of
+      expertise, is that it reveals what the act of teaching really is.  It is
+      the art of unboxing your own abstractions of understanding and using that
+      guide your students down the correct path quickly, minus a couple of the
+      more tricky and winding false starts that you yourself have already tried
+      and discarded.  This accelerates the process greatly, while still
+      requiring the student to build their understanding fully, brick by brick.
+    </p>
+    <p>
+      It is <i>NOT</i> the showing of the final result, with some piddling
+      proof or elegant derivation tacked on quickly at the end after memorizing
+      the conclusion. The student <u>MUST</u> construct their own tower of
+      abstraction with each conclusion fairly won in single combat with their
+      own minds.  They must construct their own mental model all the way down.
+      Every step investigated, lest they, like the wiley coyote before them,
+      look down and suddenly realize they aren't standing on anything
+    </p>
+    <p>
+      This does bring another question to mind: why in the experts mind, is the
+      matter as simple as definition? after all you might expect at least a
+      passing nod to mechanism, to something more explanatory, the sort of nod
+      you give to someone you knew in high school but haven't talked to in
+      years and don't particularly want to start talking to now but there's
+      still too much shared history to completely snub them and get away with
+      ... for example.
+    </p>
+    <h3>Definitionally Correct</h3>
+    <p class="subtitle">The best kind of correct</p>
+    <hr>
+    <p>
+      Well in part, its because if you do just shut up and calculate with that
+      definition, <i>It Just Works</i>&trade;  The whole of complex algebra does
+      simply fall out of that one singular monumental assumption that
+      <!-- i^2 = -1 -->
+      <math><mrow><msup><mi>i</mi><mn>2</mn></msup><mo lspace="0.2222em" rspace="0em">:</mo><mo lspace="0em">=</mo><mo form="prefix" stretchy="false">−</mo><mn>1</mn></mrow></math>
+      .  This statement contains worlds unto itself.
+      But that doesn't satisfy as a explanation does it?
+    </p>
+    <p>
+      It feels like this definition has been pulled from thin air, Ex nihilo and
+      possesing neither history nor explanation nor context.  This is a side
+      effect of the difference between how math is taught and how math is
+      invented.
+    </p>
+    <p>
+      When math is being invented, we try all possible definitions and
+      combinations and permutations and calculations, but eventually, this
+      great branching tree of decisions is trimmed when many of the tested
+      paths lead to contradictions, or useless results.  And then we throw away
+      everything that we decide isn't worth keeping. So as you can see even
+      though Mathematics is always constructed rigorously from axioms, exactly
+      which constructions we choose to make, is just that, a choice.  We choose
+      to define imaginary numbers the way we do because it doesn't cause a
+      contradiction, and its useful.  Definitions follow utility, this is one of
+      the distinctions that seperates Mathematics from its failure of a younger
+      sibling Philosophy, who after thousands of years of study and research is
+      <i>fairly</i> certain that we exist.
+    </p>
+    <p>
+      <i>&iexcl;ENOUGH!</i> I hear you cry.  You want to get to the actual
+      explanation, and you still don't understand whether Imaginary Numbers are
+      truly imaginary, or just nominally so.  Or even whether things that aren't
+      real can be useful or said to exist in another way. Or if utility is
+      itself a guide to the reality of things.
+    </p>
+    <p>
+      So here it is: <i>Imaginary Numbers are <u>EXACTLY</u> as real as the
+      natural numbers (0, 1, 2, 3, ...)</i>
+    </p>
+    <p>
+      After all, as Kronecker said: "God made the integers, all else is the work of man"
+    </p>
+    <p>
+      This pretty much mirrors the average persons intuition, perhaps minus the
+      rather uneccessary invocation of the divine, which has fallen out of
+      fashion these days.  But it gets at a deeper intuition, that the natural
+      numbers, that fractions, that irrationals even, are somehow <i>more</i>
+      than the other numbers. This is because our intuitions about quantity are
+      quietly pulling the ol' switcharoo with our intuitions about numbers on us.
+      The slippery little devils.
+    </p>
+    <p>
+      NOTE: I may refer to the types of numbers with the following
+      symbols from here on in the article
+    </p>
+    
+    <table id="group-symbol-table">
+      <tr><th>GROUP</th><th>SYMBOL</th><th>EXAMPLE</th></tr>
+      <tr><td>Natural Numbers</td><td class="center"><!-- \mathbb{N} --><math><mi>ℕ</mi></math></td><td>0,1,2,3</td></tr>
+      <tr><td>Integers<sup class="body-sidenote-num"><span class="sidenote"><sup class="sidenote-num"></sup>why <math><mi>ℤ</mi></math>? because the germans came up with this system and the german word for "the Integers" is "Zee Integers" :D</span></sup></td><td class="center"><!-- \mathbb{Z} --><math><mi>ℤ</mi></math></td><td>-2, -1, 0, 1, 2</td></tr>
+      <tr><td>Rationals</td><td class="center"><!-- \mathbb{Q} --><math><mi>ℚ</mi></math></td><td>1/2, 1/3, 517/890</td></tr>
+      <tr><td>Reals</td><td class="center"><!-- \mathbb{R} --><math><mi>ℝ</mi></math></td><td>&pi;, <i>e</i>, <!-- \sqrt{2} --><math><msqrt><mn>2</mn></msqrt></math></td></tr>
+      <tr><td>Imaginary</td><td class="center"><!-- \mathbb{I} --><math><mi>𝕀</mi></math></td><td>-2<math><mi>i</mi></math>, -3.22383<math><mi>i</mi></math>, <math><mi>i</mi></math>, &pi;<math><mi>i</mi></math></td></tr>
+      <tr><td>Complex</td><td class="center"><!-- \mathbb{C} --><math><mi>ℂ</mi></math></td><td><!-- 1 - 2i --><math><mrow><mn>1</mn><mo>−</mo><mn>2</mn><mi>i</mi></mrow></math>, <!-- -4 + 0.5i --><math><mrow><mn>4</mn><mo>+</mo><mn>0.5</mn><mi>i</mi></mrow></math>,<math><mi>i</mi></math></td></tr>
+    </table>
+    <p>
+      ALSO NOTE: each category contains all the ones previous to it, e.g. the
+      Reals are a superset (they contain all of) the Integers, just as the
+      Integers contain all of the natural numbers
+    </p>
+    <p>
+      To go further, let us examine our intuition about numbers, I will do my
+      best to be brief, but unfortunately for you my dear reader, brevity was 
+      never my forte.
+    </p>
+    <h3>Actuarially Correct</h3>
+    <p class="subtitle">Even I don't mess with the I.R.S. -- The Joker</p>
+    <hr/>
+    <p>
+      Imagine for a moment, if you will, that you are an ancient mathematician 
+      who has invented both <math><mi>ℕ</mi></math>, the natural numbers, and the algebraic 
+      operations: <!-- +, -, *, \div, \sqrt{x},\) and  x^y \)--><math><mrow><mo form="prefix" stretchy="false">+</mo><mo separator="true">,</mo><mo form="prefix" stretchy="false">−</mo><mo separator="true">,</mo><mo form="prefix" stretchy="false">∗</mo><mo separator="true">,</mo><mo form="prefix" stretchy="false">÷</mo><mo separator="true">,</mo><msqrt><mrow><mi>x</mi><mspace width="0pt" height="0.5em"></mspace></mrow></msqrt><mo separator="true">,</mo><msup><mi>x</mi><mi class="tml-sml-pad">y</mi></msup></mrow></math>
+      . So you can write and solve problems similar to:
+      <!--
+        \begin{align*}
+        2+2 &= 4 \\
+        6-3 &= 3 \\
+        16 \div 2 &= 8 \\
+        \end{align*}
+      -->
+      <math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mn>4</mn></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>6</mn><mo>−</mo><mn>3</mn></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mn>3</mn></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>16</mn><mo>÷</mo><mn>2</mn></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mn>8</mn></mrow></mtd></mtr></mtable></math>
+    </p>
+    <p>
+      Etc.  However you may note that there are equations that have no answer.
+      Take
+      <!-- x = 2 - 5 --> <math><mrow><mi>x</mi><mo>=</mo><mn>2</mn><mo>−</mo><mn>5</mn></mrow></math>
+      for example.  You don't mind this after all, because
+      you can't have less than zero sheep can you, what would a number that 
+      answered this equation even mean?
+    </p>
+    <p>
+      Anywho, you, being the only mathematically literate person this side of
+      the Euphrates decide that this is a fine time to open a bank, to track
+      and safeguard the locals money.  You have a ledger with deposits and
+      withdraws.  When a person deposits money you add the amount, when the
+      person withdraws money you subtract the amount, and when a person wants
+      to know how much money is in their account you simply work out the
+      arithmetic like so:
+      <!--
+        \text{FRANK:} \;\; 0+10-3-4+5-2=6 \; \text{gold pieces}
+        -->
+      <math display="block" class="tml-display" style="display:block math;"><mrow><mtext>FRANK:</mtext><mspace width="0.2778em"></mspace><mspace width="0.2778em"></mspace><mn>0</mn><mo>+</mo><mn>10</mn><mo>−</mo><mn>3</mn><mo>−</mo><mn>4</mn><mo>+</mo><mn>5</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>6</mn><mspace width="0.2778em"></mspace><mtext>gold pieces</mtext></mrow></math>
+      This carries on for a good while, until one day someone comes to you with
+      an idea called a loan.  This gist is that you have a lot of money right now
+      that may not technically belong to you, but most of the time people leave
+      most of their money in the bank, meaning that you could give some of that
+      money to this person, who would of course pay you back the amount
+      (plus interest) and put it back in the bank.  If the person whose money
+      you loaned out wants all their money thats fine you can just give them
+      someone else's.  After all its all in a giant pile.  You track who owns
+      what in the ledger.  As long as everyone doesn't want their money at the
+      same time this won't cause any problems, and in addition you'll make a
+      tidy profit, which is great because up till now you've basically been
+      running a charity
+    </p>
+    <p>
+      But how to represent this loan in your ledger?  Well, since its money
+      that he owes you, the most straightforward answer is to start another
+      account with amount of the loan "in" it and then subtract every time the
+      loan-ee makes a deposit, and add everytime the loan-ee withdraws more
+      money from the bank meaning expanding their loan.  This is the opposite
+      of what you were doing for the normal accounts, but its fine, you'll just
+      remember
+    </p>
+    <p>
+      So frank withdraws his loan of 50 gold, and over the course of the next
+      few weeks he deposits 3 payments of 5 gold.  Leaving the state of his
+      accounts as:
+    </p>
+      <!--
+        \begin{align*}
+        \text{FRANK:}& \;\; 0+10-3-4+5-2=6 \; \text{gold} \\
+        \text{FRANK LOAN:}& \;\; 50-5-5-5=35 \; \text{gold}
+        \end{align*}
+      -->
+    <math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mtext>FRANK:</mtext></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mspace width="0.2778em"></mspace><mspace width="0.2778em"></mspace><mn>0</mn><mo>+</mo><mn>10</mn><mo>−</mo><mn>3</mn><mo>−</mo><mn>4</mn><mo>+</mo><mn>5</mn><mo>−</mo><mn>2</mn><mo>=</mo><mn>6</mn><mspace width="0.2778em"></mspace><mtext>gold</mtext></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mtext>FRANK LOAN:</mtext></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mspace width="0.2778em"></mspace><mspace width="0.2778em"></mspace><mn>50</mn><mo>−</mo><mn>5</mn><mo>−</mo><mn>5</mn><mo>−</mo><mn>5</mn><mo>=</mo><mn>35</mn><mspace width="0.2778em"></mspace><mtext>gold</mtext></mrow></mtd></mtr></mtable></math>
+    <p>
+      One day Frank comes in and asks how much money he would owe you if he
+      payed you all the gold in his account, so you try subtracting
+      <!-- 6 - 35 = --> <math><mrow><mn>6</mn><mo>−</mo><mn>35</mn></mrow></math>
+      whoops nope, can't have numbers less than zero, after all, what would
+      that even mean?  You can't <i>HAVE</i> less than zero gold after all, so
+      you subtract the other way, cash from loan <!-- 35-6=29 --><math><mrow><mn>35</mn><mo>−</mo><mn>6</mn><mo>=</mo><mn>29</mn></mrow></math>
+      Frank owes you 29 gold.  By this point you have loans going with several people, and
+      they all have multiple accounts, some people even have more than one
+      loan, and when you need to tell their total state of affairs you have to
+      track down every account and combine them, but only some orders of
+      combinations work, after all, if a person has one account with 3 gold in
+      it, a loan still owing 7, and a final account that contains most of their
+      wealth at 35 gold.  You can't subtract these in the wrong order, because
+      your tally along the way can never be less than zero, let alone the final
+      sum
+    </p>
+    <p>
+      This is not to mention the many many clerical errors you've made because
+      of the rules for loan accounts and normal accounts being different, and
+      just a pattern external to the mathematics that you have to remember.
+      You've added many a deposit to a loan when you should have subtracted and
+      vice versa
+    </p>
+    <p>
+      Its all quite a hassel, the problem you are trying to describe is just not
+      fitting into the mathematics that you've invented.  Loans are just not 
+      a good fit for <!-- \mathbb{N} \)--><math><mi>ℕ</mi></math>
+    </p>
+    <p>
+      And so, bemoaning your situation, you sit and you stare at the
+      expressions you've written backwards causing them to have no answer
+      <!--
+      \begin{align*}
+      6-35&= \\
+      13-42&= \\
+      2-6&= \\
+      3-7&= \\
+      \end{align*}
+      -->
+      <math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>6</mn><mo>−</mo><mn>35</mn></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mo>=</mo></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>13</mn><mo>−</mo><mn>42</mn></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mo>=</mo></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>2</mn><mo>−</mo><mn>6</mn></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mo>=</mo></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>3</mn><mo>−</mo><mn>7</mn></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mo>=</mo></mtd></mtr></mtable></math>
+      But hold on a minute.  You notice something about the last two.
+      <!--
+      2 - 6 = (0 + 2) - (2 - 4) = 0 - 4 \\
+      3 - 7 = (0 + 3) - (3 - 4) = 0 - 4 \\
+      -->
+      <math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>2</mn><mo>−</mo><mn>6</mn><mo>=</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>0</mn><mo>+</mo><mn>2</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>−</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>2</mn><mo>−</mo><mn>4</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mn>0</mn><mo>−</mo><mn>4</mn></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><mrow><mn>3</mn><mo>−</mo><mn>7</mn><mo>=</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>0</mn><mo>+</mo><mn>3</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mo>−</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>3</mn><mo>−</mo><mn>4</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo>=</mo><mn>0</mn><mo>−</mo><mn>4</mn></mrow></mtd></mtr></mtable></math>
+      They're equivalent. in fact, as you look through all the expressions and
+      equations you've written, all of the expressions can be similarly
+      rearranged to the form <math><mrow><mn>0</mn><mo>−</mo><mi>n</mi></mrow></math>.
+      This happens every time that math comes out that the customer owes you money.  It can always be written as
+      an equation like <math><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>−</mo><mn>7</mn></mrow></math> 
+      or <math><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>−</mo><mn>3</mn></mrow></math> or <math><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>−</mo><mi>n</mi></mrow></math>
+      where <math><mi>n</mi></math> is a positive Natural number and <math><mi>x</mi></math> is our solution.
+    </p>
+    <p>
+      Of course, there is no solution to these equations, there is no natural
+      number that equals zero minus anything.  That's just not how natural
+      numbers work, they are quantities, they are something you can have,
+      amounts that you can <i>hold</i> in your hand.  This was useless algebra
+      on your part
+    </p>
+    <p>
+      unless... there <i>were</i> numbers that could solve the equation 
+      <math><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>−</mo><mn>2</mn></mrow></math>
+      What if... we made some up?  We already made up <math><mi>ℕ</mi></math>,
+      why not more?  Especially if they have useful properties. If we had
+      such a number, after all, we could use it to represent debt very nicely.
+      A negative number in the account would just mean that the customer owed
+      you money and a positive number means they have money in the account.
+    </p>
+    <p>
+      So, what is the number that answers <math><mrow><mi>x</mi><mo>=</mo><mn>0</mn><mo>−</mo><mn>2</mn></mrow></math>?
+      Well, because this
+      number represents the commonality between all the expressions which can
+      be rearranged into <math><mrow><mn>0</mn><mo>−</mo><mn>2</mn></mrow></math>
+      why don't you call it negative two, written <math><mrow><mo form="prefix" stretchy="false">−</mo><mn>2</mn></mrow></math>.
+      You could call it anything, it could be <math><mi>α</mi></math> or <math><mrow><mi mathvariant="normal">Δ</mi><mspace></mspace></mrow></math> or even
+      <math><mo form="prefix" stretchy="false" lspace="0em" rspace="0em">∘</mo></math>,
+      but its useful if its name indicates something about it, so you use the
+      name to mark which natural number subtracted from zero this number is a
+      solution to.  
+    </p>
+    <p>
+      It follows all the regular rules of algebra, except that it has the
+      property of being the opposite of a natural number.  And if these two are
+      summed together you get zero. 
+    </p>
+    <p>
+      In one fell swoop you have solved all your problems, you no loinger need
+      to manually decide whether deposits add or subtract on a per account
+      basis, because loans can now be represented as negative number.  So
+      deposits always add.  It also doesn't matter what order you do your
+      subtraction and addition in now because your total can be negative for a
+      brief while in the middle of calculations, its perfectly fine for that to
+      happen. If a customers balance sums in total to a positive, they own more
+      than they owe, and if it sums to a negative, they owe more than they own.
+      and they go straight to jail<sup class="body-sidenote-num"></sup><span class="sidenote"><sup class="sidenote-num"></sup>debtor's prison to be precise</span>.
+    </p>
+    <h3>But are they real?</h3>
+    <p class="subtitle">Careful with the thinking, you might hurt yourself you muppet -- unknown</p>
+    <hr>
+    <p>
+      As you can see, by adding negative numbers to our system, we've added the
+      ability for our math to speak naturally about things that not only have
+      quantities, but about quantities that oppose each other.  A concept useful when
+      representing voltages, bank accounts, and relative altitudes, among
+      innumerable(heh) other things.
+    </p>
+    <p>
+      <i>But are they real!?</i> you cry with frustration as you rend your
+      cloths and gnash your teeth.  After all -3 is not a
+      <u><i>quantity</i></u> you can't <u><i>have</i></u> less than zero of
+      something, but it fits neatly with the concept of debt, it
+      <u><i>represents</i></u> a class of problem our natural numbers struggle
+      to resolve cleanly.  Despite all this, the answer, is a resounding <b>NO</b>
+    <p>
+      To reiterate:  <math><mrow><mo form="prefix" stretchy="false">−</mo><mn>3</mn></mrow></math>
+      is <u><i>NOT</i></u> a quantity, it is <b><u><i>NOT REAL</i></u></b> , we have left
+      the realm of things that you can <u><i>HAVE</i></u> which is the only
+      class of number that most people are sure exits.
+    </p>
+    <h3>Wait a minute?</h3>
+    <p class="subtitle">Whoa dude, like what if we're all like, not real man -- Descarte, probably</p>
+    <hr>
+    <p>
+      You are probably confused now. After all I said that the Imaginary
+      numbers were as real as the Natural numbers, and then I said the Negative
+      numbers aren't real. And who on earth thinks that the Negative numbers
+      are less real that the Imaginary numbers? But you have made an error dear
+      reader, you have assumed something. Because you see, the Natural numbers
+      were never real either. And it is this assumption that they are that has lead you astray.
+    </p>
+    <p>
+      Yes you heard me right.  <math><mi>ℕ</mi></math>, yes even <math><mi>ℕ</mi></math> itself, 
+      is not real, and it never was<sup class="body-sidenote-num"></sup>.  
+      <span class="sidenote"><sup class="sidenote-num"></sup>
+        <a href="resources/assets/never_have_been__fullres.jpg">
+          <img  style="width:100%; height: auto;"
+                width=222
+                height=125
+                fetchpriority="low"
+                src="resources/assets/never_have_been__lowres.webp"
+                title="click for full resolution"
+                alt="never has been meme adapted to natural numbers not being real"/>
+        </a>
+      </span>
+      <i>"But it's a quantity?!"</i> I hear you cry
+      and NO, it is not.  I have been saying so throughout the beginning of this
+      article so as to not tip you off, but this is the misunderstanding that is
+      holding you back from true comprehension of imaginary numbers.
+    </p>
+    <p>
+      Numbers are not quantities
+    </p>
+    <p>
+      Numbers are a pattern, they are a set of labels that have an order  and
+      <i>nothing more</i>. We use them to <i>REPRESENT</i> quantities, just as
+      we use the integers to represent quantites with polarity (if you wish to
+      see a more detailed examination of this, go to the further reading
+      section of the footer and watch the <a href="https://www.youtube.com/watch?v=dKtsjQtigag">video</a> on constructing the natural
+      numbers from Another Roof Another Proof)
+    </p>
+    <p>
+      Quantities, however, <i>ARE</i> real, they are a measurable thing with
+      certain properties and we built <math><mi>ℕ</mi></math> to represent them.
+    </p>
+    <p>
+      if you have two piles of rocks, you have two quantities, and if you
+      combine these piles of rocks you have a third larger quantity.  We
+      constructed the natural numbers and addition such that when you assign
+      the correct labels which correspond to the quantities of both piles, and
+      then you perform the operation of addition upon those labels, you get the
+      label corresponding with the quantity of the combined pile.  But the
+      numbers themselves are just made up.  if you take a quantity away from a 
+      quantity, thats represented by subtraction. If you have the same quantity
+      multiple times you can represent that with multiplication.  If you break
+      the quantity in equal groups you can represent this with division
+    </p>
+
+    <p>
+      But the labels just do whatever we want them to, they represent whatever we
+      need.  THIS is why its fine for a <i>number</i> squared to equal a
+      negative.  It is true that a <i>quantity</i> squared can never equal a
+      negative, but a number is not a quantity.  A number is just a label that
+      does whatever we define it to do.  So people get confused saying that there
+      is no number that when squared can make a negative, when what they truely
+      are conceptualizing in their heads is that there is no QUANTITY that when
+      squared can equal a negative.  This is because quantities are so easy to
+      conflate with the positive Reals.  This conflation is so strong that we
+      think that they are one and the same, which leads to confusion when we do
+      things that make perfect sense to do to numbers (such as define a new type
+      that squares to negative one) but is utterly incomprehensible from the
+      interpretation of quantities.
+    </p>
+    <p>
+      So in reality, there is ABSOLUTELY NO DIFFERENCE IN THE NATURE OF THE
+      FOLLOWING STATEMENTS:
+      <!--
+      \begin{align*}
+      4^2       &:= 16 \\
+      (-1)^2    &:= 1 \\
+      i^2       &:= -1
+      \end{align*}
+      -->
+      <math display="block" class="tml-display" style="display:block math;"><mtable displaystyle="true" class="tml-jot"><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><msup><mn>4</mn><mn>2</mn></msup></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo lspace="0.2222em" rspace="0em">:</mo><mo lspace="0em">=</mo><mn>16</mn></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><msup><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">−</mo><mn>1</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mn>2</mn></msup></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo lspace="0.2222em" rspace="0em">:</mo><mo lspace="0em">=</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="tml-right" style="padding-left:0em;padding-right:0em;"><msup><mi>i</mi><mn>2</mn></msup></mtd><mtd class="tml-left" style="padding-left:0em;padding-right:0em;"><mrow><mo lspace="0.2222em" rspace="0em">:</mo><mo lspace="0em">=</mo><mo form="prefix" stretchy="false">−</mo><mn>1</mn></mrow></mtd></mtr></mtable></math>
+    </p>
+    <p>
+      NUMBERS ARE PATTERNS, patterns that we create because they map neatly onto
+      and cleanly represent problems that we are interested in solving.
+    </p>
+    <p>
+      (if you're still struggling it may help you to go to the addendum section
+      and see a way that you can construct an <math><mi>i</mi></math> using nothing but the
+      real numbers and if that doesn't help then see the <a href="https://www.youtube.com/watch?v=IzUw53h12wU">video</a> by Another Roof
+      Another Proof about constructing All the types of numbers AFTER watching
+      the <a href="https://www.youtube.com/watch?v=dKtsjQtigag">video</a> on constructing the Natural numbers, they build on each other.)
+    </p>
+    <p>
+      This is my point, this is what little enlightenment I can offer you, this
+      is the gnosis that you must take unto yourself even if you remember
+      nothing else of what I have written.
+    </p>
+    <p>
+       <i>numbers are not the quantities they represent</i>
+    </p>
+    <h3>So what exactly are imaginary numbers useful for?</h3>
+    <p class="subtitle">Don't worry I've done plenty of math, it'll be easy, like peeling a turtle -- unknown</p>
+    <hr/>
+    <p>
+      What you need to take from our invention of the integers is that we got
+      along pretty well fine without them.  But by representing quantities that
+      oppose solely using positive numbers we had to impose external rules and
+      patterns to the math in order to represent negatives.  Such as reversing
+      whether a deposit added or subtracted. Or managing the order that you do
+      you tallying up in to prevent the total from being temporarily
+      negative
+    </p>
+    <p>
+      however by creating a new pattern, a new type of number that fits the
+      problem we're working on our task became smooth and uncomplicated.
+      Negatives encode the concept of polarity, of opposition.
+    </p>
+    <p>
+      Similar processes lead to our invention of the Rationals (Fractions) which
+      solve equations no whole numbers can solve such as
+      <math><mrow><mn>2</mn><mi>x</mi><mo>−</mo><mn>3</mn><mo>=</mo><mn>0</mn></mrow></math>,
+      Irrationals
+      <!-- (&pi;, <i>e</i>, \sqrt{2}\)) --> (&pi;, <i>e</i>, <math><msqrt><mn>2</mn></msqrt></math>)
+      which are numbers that no fraction can represent. And finally, to the
+      creation of the Complex numbers which solve equations no positive or
+      negative real number can such as
+      <math><mrow><msup><mi>x</mi><mn class="tml-sml-pad">2</mn></msup><mo>+</mo><mn>1</mn><mo>=</mo><mn>0</mn></mrow></math>
+      How do they do this? They
+      encode the concept of cycles, of repetition. As you may know,
+      <math><mrow><msup><mi>i</mi><mn>2</mn></msup><mo lspace="0.2222em" rspace="0em">:</mo><mo lspace="0em">=</mo><mo form="prefix" stretchy="false">−</mo><mn>1</mn></mrow></math>,
+      however, it is time to think about the patterns that arise
+      from this, and how we can use them to represent problems in nature that
+      we wish to solve.  It is fairly trivial to see how cyclical patterns
+      arise from <math><mi>i</mi></math>, you just multiply it by itself a bunch of times
+      <!--
+      \begin{array}{lrcr}
+      & & & 1 \\
+      \xrightarrow{\text{*i}} & (1)(i)  & = & i \\
+      \xrightarrow{\text{*i}} & i^2 & = & -1 \\
+      \xrightarrow{\text{*i}} & (-1)(i) & = & -i \\
+      \xrightarrow{\text{*i}} & -i^2 & = & 1 \\
+      \end{array}
+      -->
+      <math display="block" class="tml-display" style="display:block math;"><mtable><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow></mrow></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:5.9776pt;"><mrow></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mrow></mrow></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mn>1</mn></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow><mspace width="0.2778em"></mspace><mover accent="false"><mo stretchy="true" lspace="0" rspace="0">→</mo><mover><mrow><mspace width="0.4286em"></mspace><mtext>*i</mtext><mspace width="0.4286em"></mspace></mrow><mspace width="3.5000em"></mspace></mover></mover><mspace width="0.2778em"></mspace></mrow></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:5.9776pt;"><mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mn>1</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>i</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mo>=</mo></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mi>i</mi></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow><mspace width="0.2778em"></mspace><mover accent="false"><mo stretchy="true" lspace="0" rspace="0">→</mo><mover><mrow><mspace width="0.4286em"></mspace><mtext>*i</mtext><mspace width="0.4286em"></mspace></mrow><mspace width="3.5000em"></mspace></mover></mover><mspace width="0.2778em"></mspace></mrow></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:5.9776pt;"><msup><mi>i</mi><mn>2</mn></msup></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mo>=</mo></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mrow><mo form="prefix" stretchy="false">−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow><mspace width="0.2778em"></mspace><mover accent="false"><mo stretchy="true" lspace="0" rspace="0">→</mo><mover><mrow><mspace width="0.4286em"></mspace><mtext>*i</mtext><mspace width="0.4286em"></mspace></mrow><mspace width="3.5000em"></mspace></mover></mover><mspace width="0.2778em"></mspace></mrow></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:5.9776pt;"><mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mo form="prefix" stretchy="false">−</mo><mn>1</mn><mo fence="true" form="postfix" stretchy="false">)</mo></mrow><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mi>i</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mo>=</mo></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mrow><mo form="prefix" stretchy="false">−</mo><mi>i</mi></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow><mspace width="0.2778em"></mspace><mover accent="false"><mo stretchy="true" lspace="0" rspace="0">→</mo><mover><mrow><mspace width="0.4286em"></mspace><mtext>*i</mtext><mspace width="0.4286em"></mspace></mrow><mspace width="3.5000em"></mspace></mover></mover><mspace width="0.2778em"></mspace></mrow></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:5.9776pt;"><mrow><mo form="prefix" stretchy="false">−</mo><msup><mi>i</mi><mn>2</mn></msup></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mo>=</mo></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mn>1</mn></mtd></mtr></mtable></math>
+      You'll notice that we started repeating ourselves after 4 multiplications.
+      You also can multiply a complex number by <math><mi>i</mi></math> multiple times.  Lets do it
+      and see what happens
+      <!--
+      \begin{array}{lcr}
+      & & 1 + i \\
+      \xrightarrow{\text{*i}} & = & -1 + i \\
+      \xrightarrow{\text{*i}} & = & -1 - i \\
+      \xrightarrow{\text{*i}} & = & 1 - i \\
+      \xrightarrow{\text{*i}} & = & 1 + i \\
+      \end{array}
+      -->
+      <math display="block" class="tml-display" style="display:block math;"><mtable><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mrow></mrow></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mrow><mn>1</mn><mo>+</mo><mi>i</mi></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow><mspace width="0.2778em"></mspace><mover accent="false"><mo stretchy="true" lspace="0" rspace="0">→</mo><mover><mrow><mspace width="0.4286em"></mspace><mtext>*i</mtext><mspace width="0.4286em"></mspace></mrow><mspace width="3.5000em"></mspace></mover></mover><mspace width="0.2778em"></mspace></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mo>=</mo></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mrow><mo form="prefix" stretchy="false">−</mo><mn>1</mn><mo>+</mo><mi>i</mi></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow><mspace width="0.2778em"></mspace><mover accent="false"><mo stretchy="true" lspace="0" rspace="0">→</mo><mover><mrow><mspace width="0.4286em"></mspace><mtext>*i</mtext><mspace width="0.4286em"></mspace></mrow><mspace width="3.5000em"></mspace></mover></mover><mspace width="0.2778em"></mspace></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mo>=</mo></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mrow><mo form="prefix" stretchy="false">−</mo><mn>1</mn><mo>−</mo><mi>i</mi></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow><mspace width="0.2778em"></mspace><mover accent="false"><mo stretchy="true" lspace="0" rspace="0">→</mo><mover><mrow><mspace width="0.4286em"></mspace><mtext>*i</mtext><mspace width="0.4286em"></mspace></mrow><mspace width="3.5000em"></mspace></mover></mover><mspace width="0.2778em"></mspace></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mo>=</mo></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mrow><mn>1</mn><mo>−</mo><mi>i</mi></mrow></mtd></mtr><mtr><mtd class="tml-left" style="padding-left:0pt;padding-right:5.9776pt;"><mrow><mspace width="0.2778em"></mspace><mover accent="false"><mo stretchy="true" lspace="0" rspace="0">→</mo><mover><mrow><mspace width="0.4286em"></mspace><mtext>*i</mtext><mspace width="0.4286em"></mspace></mrow><mspace width="3.5000em"></mspace></mover></mover><mspace width="0.2778em"></mspace></mrow></mtd><mtd style="padding-left:5.9776pt;padding-right:5.9776pt;"><mo>=</mo></mtd><mtd class="tml-right" style="padding-left:5.9776pt;padding-right:0pt;"><mrow><mn>1</mn><mo>+</mo><mi>i</mi></mrow></mtd></mtr></mtable></math>
+      Wait a minute...  this sign flipping pattern reminds me of points moving
+      around through the quadrants of a graph.  Lets graph these points and see
+      if the geometry gives us any insight, We'll put the real part of the point
+      on the x-axis and the imaginary part on the y-axis
+    </p>
+    <figure>
+      <div class="image-box">
+        <img width=800 height=800 style="max-width: 100%; height:auto; margin: 0px;" src="resources/assets/desmos_multiply_complex_by_i.svg" alt="graph of complex number 1 + i multiplied by i repeatedly causing the point to circle about the origin"/>
+      </div>
+      <figcaption>Repeated multiplication of complex number</figcaption>
+    </figure>
+    <p>
+      huh, it kinda looks like the point is rotating by 90&deg; every time we
+      multiply by <math><mi>i</mi></math>.  Lets put the other points we multiplied on there as well to double check
+    </p>
+    <figure>
+      <div class="image-box">
+        <img width=800 height=800 style="max-width: 100%; height:auto;" src="resources/assets/desmos_complex_and_imaginary_multiplied_by_i.svg" alt="graph containing same points as earlier, but also the circling done by the complex number i when repeatedly multiplied by i"/>
+      </div>
+      <figcaption>Repeated multiplication of imaginary AND complex numbers</figcaption>
+    </figure>
+    <p>
+      Well would'ya look at that.  Multiplying by <math><mi>i</mi></math> makes points rotate by
+      90&deg; in the plane.  This begs the question, can we multiply by
+      something to rotate by arbitrary angles?, the answer is yes, its the complex number
+      <!-- e^{\theta i} -->
+      <math><msup><mi>e</mi><mrow class="tml-sml-pad"><mi>θ</mi><mi>i</mi></mrow></msup></math>
+      or written another way 
+      <!-- ( \cos{\theta} + i\sin{\theta} ) -->
+      <math><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mrow><mi>cos</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>θ</mi><mo>+</mo><mi>i</mi><mrow><mspace width="0.1667em"></mspace><mi>sin</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>θ</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></math>
+      (we will not be going through the derivation<sup class="body-sidenote-num"></sup>
+      <span class="sidenote">
+        <sup class="sidenote-num"></sup>if you are confused about what it even means to take a number to a complex
+        exponent, then see feynmann's <a href="https://www.feynmanlectures.caltech.edu/I_22.html">lecture</a> on
+        complex algebra in the addendums, I will also be writing another blog post on
+        this very topic shortly about expanding your concept of exponentiation so you
+        also could hang around for that if you found this one helpful :D
+      </span>
+      today as
+      this article is long enough, and if you're here its probably after your
+      high school math class introduced complex algebra to you so you already
+      have some idea how they behave already anyways)
+    </p>
+    <p>
+      Now, you may see how this could useful maybe in some esoteric
+      mathematical context, but what about those of us whose concerns are more
+      earthly than checking how many N dimensional polyhedral vector bases can
+      you fit into a hyper-tesseract before they stop tesselating and start
+      forming monads. Well to answer your question, they are <i>incredibly</i>
+      useful.  Because you see, Complex numbers encode the concept of cycles,
+      and where there are cycles, there are circles, and where there are
+      circles, there are sinusoids and angles and trigonometry and rotation and
+      <u><b><i>WAVES</i></b></u>.  Not to mention imaginary numbers beget
+      Eulers' identity and formula, one of the most important mathematical
+      inventions ever as it links algebra, geometry, and trigonometry all
+      together into one.
+    </p>
+    <p>
+      But the waves are my favorite part, because you see I'm an Electrical
+      Engineer, and my entire field would be anywhere from impossible to an
+      absolute pain in the ass if not for imaginary numbers
+    </p>
+    <p>
+      This is because sinusoids and exponentials are the solution to entire classes of
+      Differential Equations, and Differential Equations describe quite
+      literally everything. And complex numbers <math><mi>ℂ</mi></math> massively
+      simplify the representation and manipulation of these equations because
+      of eulers identity which you may remember,
+      <!--  e^{\theta i} = ( \cos{\theta} + i\sin{\theta}) \) -->
+      <math><mrow><msup><mi>e</mi><mrow class="tml-sml-pad"><mi>θ</mi><mi>i</mi></mrow></msup><mo>=</mo><mrow><mo fence="true" form="prefix" stretchy="false">(</mo><mrow><mi>cos</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>θ</mi><mo>+</mo><mi>i</mi><mrow><mspace width="0.1667em"></mspace><mi>sin</mi><mo>⁡</mo><mspace width="0.1667em"></mspace></mrow><mi>θ</mi><mo fence="true" form="postfix" stretchy="false">)</mo></mrow></mrow></math>,
+      ties both of these together into one neat package
+    </p>
+    <p>
+      What this means is that the math the makes the power grid possible, that
+      describes a buildings response to an earthquake, that powers radios and
+      the suspension in your car, every P.I.D. industrial controller system for
+      the last 100 years, and every guitar amp and audio filter is based in
+      math described by complex algebra.
+    </p>
+    <p>
+      And all because they deal with waves, and complex algebra lets us treat
+      waves, in all their glorious complexity, like they are just a number
+    </p>
+    <p>
+    If you remember the analogy with the negative numbers from earlier, all of
+    these problems would be possible (at least theoretically) to describe
+    without complex numbers, but it would be clunky, difficult, and error
+    prone. <math><mi>ℂ</mi></math> however, makes the process smooth, because
+    it FITS THE PROBLEM
+    </p>
+    <p>
+      Numbers are not quantities, they are useful patterns that we make up
+    </p>
+    <p>
+      Complex numbers, are just another useful pattern, not built for describing
+      quantities like Real numbers, but for describing waves and cycles and rotation
+    </p>
+    <p>
+    Q.E.D.
+    </p>
+    <p>
+    So now my disciple, thou art enlightened.  Go forth and when you are
+    questioned as to what an imaginary number is say "<math><mi>i</mi></math>
+    is defined as the thing that when squared equals -1" and revel as the idiot before you gnashes their teeth in frustration, or you know, direct them to this webpage, I'd appreciate the traffic &#x1F449;&#x1F448; UwU.
+    </p>
+    <hr>
+    <h3>Endnotes, Sources, and Whatnot</h3>
+    <ul>
+      <li>
+        I'll be honest, this is the first blog post I've ever written, and
+        while I intentionally wrote this with an I-am-very-smart air as a joke
+        it got a little out of hand lol, also it blended with the terminally
+        online zoomer vibes in a very strange way, anywho thanks for reading
+      </li>
+      <li>
+        fair warning, a good half of the subtitle quotes in this article are
+        completely made up, why? to teach you that you shouldn't trust things
+        you read on the internet of course. Get <span class="terminal-mono">pwned</span> kid you clearly are not
+        an internet savvy <span class="terminal-mono">1337 H4x0r</span> like myself. Better luck next time.
+      </li>
+    </ul>
+    <h3>Addendums, Further Reading, and Suchlike</h3>
+    <ul>
+      <li>
+        If I've gotten around to writing the second blog post about what imaginary exponentiation means its <a href="">here</a>
+      </li>
+      <li>
+        feynman's lecture on <a href="https://www.feynmanlectures.caltech.edu/I_22.html">deriving complex algebra</a> and what it means to raise a number to a complex exponent and how that brings about eulers formula is good further reading if you wish
+      </li>
+      <li>
+        another roof another proof has some great videos on constructing all
+        the types of numbers, starting with the <a
+        href="https://www.youtube.com/watch?v=dKtsjQtigag">natural numbers</a>
+      <math><mi>ℕ</mi></math> and then all the numbers types up to the <a href="https://www.youtube.com/watch?v=IzUw53h12wU">complex
+        numbers</a>  <math><mi>ℂ</mi></math> that help with the understanding that
+      numbers are just labels that do whatever we want them to
+      </li>
+    </ul>
+  </body>
+</html>
